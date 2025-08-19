@@ -6,6 +6,7 @@ let selectedTransferData = null;
 
 // Initialize transfer page
 async function initializeTransferPage() {
+    showLoading('accounts-list', 'Loading your accounts...');
     try {
         await loadAccountsForTransfer();
         setupTransferForm();
