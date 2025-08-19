@@ -145,12 +145,10 @@ async function loadAccountsData() {
             html = `
                 <div class="row">
                     ${accounts.map(account => `
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <div class="balance-card">
-                                <h5>Account Number</h5>
-                                <div class="balance-amount">${account.accountNumber}</div>
-                                <h5>Balance</h5>
-                                <div class="balance-amount">₹${account.balance.toLocaleString('en-IN', {minimumFractionDigits: 2})}</div>
+                                <div class="balance-amount">Account Number: <b> ${account.accountNumber}</b></div>
+                                <div class="balance-amount">Balance: <b> ₹ ${account.balance.toLocaleString('en-IN', {minimumFractionDigits: 2})}</b></div>
                             </div>
                         </div>
                     `).join('')}

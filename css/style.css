@@ -143,17 +143,16 @@ body {
 }
 
 .balance-card {
-    background: linear-gradient(135deg, #fd7e14, #e36f11);
-    color: white;
+    background-color: white;
+    border: 1px solid #fd7e14;
     border-radius: 0.75rem;
-    padding: 2rem;
-    text-align: center;
+    padding: 1rem;
 }
 
 .balance-amount {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin: 1rem 0;
+    color: #fd7e14;
+    font-size: 1rem;
+    margin: 0.2rem 0;
 }
 
 /* Transaction Styles */
