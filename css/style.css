@@ -143,17 +143,27 @@ body {
 }
 
 .balance-card {
-    background-color: white;
-    border: 1px solid #fd7e14;
-    border-radius: 0.75rem;
-    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* soft shadow */
+    border: 1px solid #f1f1f1; /* subtle border */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.balance-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); /* lift effect */
 }
 
 .balance-amount {
     color: #fd7e14;
     font-size: 1rem;
-    margin: 0.2rem 0;
+    font-weight: 700;
+    margin: 0.25rem 0;
 }
+
+
 
 /* Transaction Styles */
 .transaction-item {

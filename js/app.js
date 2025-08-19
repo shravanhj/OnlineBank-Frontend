@@ -147,8 +147,8 @@ async function loadAccountsData() {
                     ${accounts.map(account => `
                         <div class="col-md-3 mb-3">
                             <div class="balance-card">
-                                <div class="balance-amount">Account Number: <b> ${account.accountNumber}</b></div>
-                                <div class="balance-amount">Balance: <b> ₹ ${account.balance.toLocaleString('en-IN', {minimumFractionDigits: 2})}</b></div>
+                                <div >Account Number: <b class="balance-amount"> ${account.accountNumber}</b></div>
+                                <div>Balance: <b class="balance-amount"> ₹ ${account.balance.toLocaleString('en-IN', {minimumFractionDigits: 2})}</b></div>
                             </div>
                         </div>
                     `).join('')}
@@ -157,27 +157,31 @@ async function loadAccountsData() {
             
             if (transactions.length > 0) {
                 html += `
-                    <div class="mt-4">
-                        <h4>Recent Transactions</h4>
-                        ${transactions.slice(0, 10).map(transaction => `
-                            <div class="transaction-item ${transaction.transactionType === 'CREDIT' ? 'transaction-credit' : 'transaction-debit'}">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <strong>${transaction.transactionType}</strong>
-                                        <br>
-                                        <small class="text-muted">${transaction.transferMode || 'NEFT'}</small>
-                                        <br>
-                                        <small class="text-muted">${new Date(transaction.transactionDate).toLocaleDateString()}</small>
-                                    </div>
-                                    <div class="text-end">
-                                        <strong>₹${transaction.amount.toLocaleString('en-IN', {minimumFractionDigits: 2})}</strong>
-                                        <br>
-                                        <small class="text-muted">${transaction.status}</small>
-                                    </div>
-                                </div>
-                            </div>
-                        `).join('')}
+<div class="mt-4">
+    <h4 class="mb-3">Recent Transactions</h4>
+    <div class="row g-2">
+        ${transactions.slice(0, 10).map(transaction => `
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="p-2 border rounded-full bg-white shadow-sm 
+                    ${transaction.transactionType === 'CREDIT' ? 'bg-light border-success' : 'bg-light border-danger'}">
+                    
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong class="d-block fs-6">${transaction.transactionType}</strong>
+                            <small class="text-muted d-block">${transaction.transferMode || 'NEFT'}</small>
+                            <small class="text-muted d-block">${new Date(transaction.transactionDate).toLocaleDateString()}</small>
+                        </div>
+                        <div class="text-end">
+                            <strong class="d-block fs-6 text-dark">₹${transaction.amount.toLocaleString('en-IN', {minimumFractionDigits: 2})}</strong>
+                            <small class="text-muted">${transaction.status}</small>
+                        </div>
                     </div>
+                </div>
+            </div>
+        `).join('')}
+    </div>
+</div>
+
                 `;
             }
         }
